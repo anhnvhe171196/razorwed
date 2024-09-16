@@ -58,6 +58,15 @@ namespace _12_EntityFramworkEx
                 // Cấu hình đăng nhập
                 options.SignIn.RequireConfirmedEmail = true; // Yêu cầu xác nhận email
                 options.SignIn.RequireConfirmedPhoneNumber = false; // Không yêu cầu xác nhận số điện thoại
+                options.SignIn.RequireConfirmedAccount = false;
+            
+            });
+
+            builder.Services.ConfigureApplicationCookie(option =>
+            {
+                option.LoginPath = "Identity/Account/Login";
+                option.LogoutPath = "Identity/Account/Logout";
+                option.AccessDeniedPath = "Identity/Account/AccessDenied";
             });
 
             var app = builder.Build();
