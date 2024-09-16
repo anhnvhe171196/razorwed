@@ -7,15 +7,19 @@ namespace _12_EntityFramworkEx.Models
     {
         [Key]
         public int Id { get; set; }
-        [StringLength(100)]
-        [Required]
+        [StringLength(100, MinimumLength = 5, ErrorMessage = "{0} phải dài từ {2} đến {1}")]
+        [Required(ErrorMessage = "{0} phải nhập")]
         [Column(TypeName = "nvarchar")]
+        [Display(Name = "Tiêu đề")]
         public string Title { get; set; }
         [DataType(DataType.Date)]
-        [Required]
+        [Required(ErrorMessage = "{0} phải nhập")]
+        [Display(Name = "Ngày tạo")]
         public DateTime Created {  get; set; }
 
         [Column(TypeName = "ntext")]
-        public string Content { get; set; }
+        [Display(Name = "Nội dung")]
+        [Required(ErrorMessage = "{0} phải nhập")]
+        public string? Content { get; set; }
     }
 }
