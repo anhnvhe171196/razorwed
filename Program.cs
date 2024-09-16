@@ -48,7 +48,7 @@ namespace _12_EntityFramworkEx
 
                 // Cấu hình Lockout (khóa người dùng sau nhiều lần thất bại)
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5); // Khóa 5 phút
-                options.Lockout.MaxFailedAccessAttempts = 5; // Thất bại 5 lần thì khóa
+                options.Lockout.MaxFailedAccessAttempts = 3; // Thất bại 5 lần thì khóa
                 options.Lockout.AllowedForNewUsers = true;
 
                 // Cấu hình về User
@@ -64,9 +64,9 @@ namespace _12_EntityFramworkEx
 
             builder.Services.ConfigureApplicationCookie(option =>
             {
-                option.LoginPath = "Identity/Account/Login";
-                option.LogoutPath = "Identity/Account/Logout";
-                option.AccessDeniedPath = "Identity/Account/AccessDenied";
+                option.LoginPath = "/Identity/Account/Login";
+                option.LogoutPath = "/Identity/Account/Logout";
+                option.AccessDeniedPath = "/Identity/Account/AccessDenied";
             });
 
             var app = builder.Build();
